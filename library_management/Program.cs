@@ -33,61 +33,81 @@ namespace LibraryManagement
         //Password verfication and Menu 
         static void Main(string[] args)
         {
-            Console.Write("Welcome !!!\nEnter your password :");
-            string password = Console.ReadLine();
-
-            if (password == "12345")
+            Console.Write("==========Welcome========== !!!!\n" +
+                "Please select the user type:  \n [1] Librarian \n [2] Reader\n ");
+            int user_type = int.Parse(Console.ReadLine());
+            if (user_type == 1)
             {
-                bool close = true;
-                while (close)
+                Console.WriteLine("Welcome to the library Librarian!!!!!");
+                bool clos = true;
+                while (clos)
                 {
                     Console.WriteLine("\nMenu\n" +
                     "1)Add book\n" +
                     "2)Delete book\n" +
-                    "3)Search book\n" +
-                    "4)Borrow book\n" +
-                    "5)Return book\n" +
-                    "6)Close\n\n");
+                    "3)Search book\n4) Close\n");
                     Console.Write("Choose your option from menu :");
 
                     int option = int.Parse(Console.ReadLine());
 
-                    if (option == 1)
+                    switch (option)
                     {
-                        GetBook();
-                    }
-                    else if (option == 2)
-                    {
-                        RemoveBook();
-                    }
-                    else if (option == 3)
-                    {
-                        SearchBook();
-                    }
-                    else if (option == 4)
-                    {
-                        Borrow();
-                    }
-                    else if (option == 5)
-                    {
-                        ReturnBook();
-                    }
-                    else if (option == 6)
-                    {
-                        Console.WriteLine("Thank you");
-                        close = false;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid option\nRetry !!!");
+                        case 1:
+                            GetBook();
+                            break;
+                        case 2:
+                            RemoveBook();
+                            break;
+                        case 3:
+                            SearchBook();
+                            break;
+
+                        case 4:
+                            {
+                                Console.WriteLine("Thank you");
+                                clos = false;
+                                break;
+                            }
+
                     }
                 }
             }
-            else
+            else if (user_type == 2)
             {
-                Console.WriteLine("Invalid password");
+                Console.WriteLine("Welcome to the Library :: Reader!!!!!!");
+                bool close = true;
+                while (close)
+                {
+                    Console.WriteLine("\nMenu\n" +
+                    "1) Borrow a book\n" +
+                    "2) Return a book\n" +
+                    "3) Close\n\n");
+                    Console.Write("Choose your option from menu :");
+
+                    int option = int.Parse(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            Borrow();
+                            break;
+                        case 2:
+                            ReturnBook();
+                            break;
+                         case 3:
+                            {
+                                Console.WriteLine("Thank you");
+                                close = false;
+                                break;
+                            }
+
+                    }
+                }
             }
+
+               
+            
+            
             Console.ReadLine();
         }
 

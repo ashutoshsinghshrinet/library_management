@@ -42,7 +42,7 @@ namespace LibraryManagement
 
         //Password verfication and Menu 
         static void Main(string[] args)
-        {
+        {   again:
             Console.Write("==========Welcome========== !!!!\n" +
                 "Please select the user type:  \n [1] Librarian \n [2] Reader\n ");
             int user_type = int.Parse(Console.ReadLine());
@@ -132,7 +132,7 @@ namespace LibraryManagement
                 Console.WriteLine("What Do you want to acces: \n" +
                "1) Books\n" +
                "2) Newspapers\n");
-               int  prod_type = int.Parse(Console.ReadLine());
+                int prod_type = int.Parse(Console.ReadLine());
                 if (prod_type == 1)
                 {
                     bool close = true;
@@ -165,12 +165,22 @@ namespace LibraryManagement
                     }
 
                 }
+                else if (prod_type == 2)
+                {
+                    Console.WriteLine("Can read newspapers");
+                }
 
 
             }
-
-
-            Console.ReadLine();
+            else 
+            {
+                Console.WriteLine("Invalid Input\n" +
+                    "If You want to continue Press Y to or else press any key");
+                string c = Console.ReadLine();
+                if(c == "y" || c == "Y")
+                         goto again;
+            }
+            
         }
         //To add book details to the Library database
         public static void GetBook()

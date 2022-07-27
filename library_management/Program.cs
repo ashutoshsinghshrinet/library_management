@@ -12,7 +12,7 @@ namespace LibraryManagement
         public int bookCount;
         public int x;
     }
-    //Defining a class for newspaper
+    //Defining a class Borrow
     class Newspaper
     {
         public int paperID;
@@ -21,8 +21,8 @@ namespace LibraryManagement
         public int paperCount;
         public int a;
     }
-    //Defining a class Borrow
     class BorrowDetails
+
     {
         public int userId;
         public string userName;
@@ -39,149 +39,169 @@ namespace LibraryManagement
         static Book book = new Book();
         static BorrowDetails borrow = new BorrowDetails();
         static List<Newspaper> paperList = new List<Newspaper>();
+        static Newspaper newspaper = new Newspaper();
 
-        //Password verfication and Menu 
+        //Password verfication and Menu
         static void Main(string[] args)
-        {   again:
-            Console.Write("==========Welcome========== !!!!\n" +
-                "Please select the user type:  \n [1] Librarian \n [2] Reader\n ");
-            int user_type = int.Parse(Console.ReadLine());
-            if (user_type == 1)
+        {
+            Console.WriteLine("=====Welcome to  Library=====");
+            
+
+
+            if (true)
             {
-                Console.WriteLine("Welcome to the library Librarian!!!!!\n");
-                Console.WriteLine("What Do you want to acces: \n" +
-                    "1) Books\n" +
-                    "2) Newspapers\n");
-                int prod_type = int.Parse(Console.ReadLine());
-                if (prod_type == 1)
+                while (true)
                 {
-                    bool clos = true;
-                    while (clos)
+                    Console.WriteLine("--------------------------");
+                    Console.WriteLine("Welcome to the library\n Hope you have a good time here!!!!");
+                    Console.WriteLine("\nSelect from the below option to continue.....\n" +
+                    "1)press 1 to access books\n" +
+                    "2)Press 2 to access newspapers\n");
+                    Console.Write("Enter the Option you want to go with :");
+
+                    int option = int.Parse(Console.ReadLine());
+                    if (option == 1)
                     {
-                        Console.WriteLine("\nMenu\n" +
-                        "1)Add book\n" +
-                         "2)Delete book\n" +
-                         "3)Search book\n4) Close\n");
-                        Console.Write("Choose your option from menu :");
-
-                        int option = int.Parse(Console.ReadLine());
-
-                        switch (option)
-                        {
-                            case 1:
-                                GetBook();
-                                break;
-                            case 2:
-                                RemoveBook();
-                                break;
-                            case 3:
-                                SearchBook();
-                                break;
-
-                            case 4:
-                                {
-                                    Console.WriteLine("Thank you");
-                                    clos = false;
-                                    break;
-                                }
-                        }
-
+                        forBook();
+                    }
+                    else if (option == 2)
+                    {
+                        forNewspaper();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid option\nRetry !!!");
                     }
                 }
-                else if (prod_type == 2)
-                {
-                    bool clos = true;
-                    while (clos)
-                    {
-                        Console.WriteLine("\nMenu\n" +
-                         "1)Add Paper\n" +
-                         "2)Delete Paper\n" +
-                         "3)Search Paper\n4) Close\n");
-                        Console.Write("Choose your option from menu :");
-
-                        int option = int.Parse(Console.ReadLine());
-
-                        switch (option)
-                        {
-                            case 1:
-                                AddPaper();
-                                break;
-                            case 2:
-                                RemovePaper();
-                                break;
-                            case 3:
-                                SearchPaper();
-                                break;
-
-                            case 4:
-                                {
-                                    Console.WriteLine("Thank you");
-                                    clos = false;
-                                    break;
-                                }
-
-                        }
-
-                    }
-                }
-            }
-
-            else if (user_type == 2)
-            {
-                Console.WriteLine("Welcome to the Library :: Reader!!!!!!");
-                Console.WriteLine("What Do you want to acces: \n" +
-               "1) Books\n" +
-               "2) Newspapers\n");
-                int prod_type = int.Parse(Console.ReadLine());
-                if (prod_type == 1)
-                {
-                    bool close = true;
-                    while (close)
-                    {
-                        Console.WriteLine("\nMenu\n" +
-                        "1) Borrow a book\n" +
-                        "2) Return a book\n" +
-                        "3) Close\n\n");
-                        Console.Write("Choose your option from menu :");
-
-                        int option = int.Parse(Console.ReadLine());
-
-                        switch (option)
-                        {
-                            case 1:
-                                Borrow();
-                                break;
-                            case 2:
-                                ReturnBook();
-                                break;
-                            case 3:
-                                {
-                                    Console.WriteLine("Thank you");
-                                    close = false;
-                                    break;
-                                }
-
-                        }
-                    }
-
-                }
-                else if (prod_type == 2)
-                {
-                    Console.WriteLine("Can read newspapers");
-                }
 
 
-            }
-            else 
-            {
-                Console.WriteLine("Invalid Input\n" +
-                    "If You want to continue Press Y to or else press any key");
-                string c = Console.ReadLine();
-                if(c == "y" || c == "Y")
-                         goto again;
             }
             
+            Console.ReadLine();
         }
+        public static void forBook()
+        {
+            bool close = true;
+            while (close)
+            {
+
+                Console.WriteLine("\nOption To Select\n" +
+                "1)Press 1 to  Add book\n" +
+                "2)Press 2 to Delete book\n" +
+                "3)Press 3 to Search book\n" +
+                "4)Press 4 to Borrow book\n" +
+                "5)Press 5 to Return book\n" +
+                "6)To Close Press Library 6 \n" +
+                "7)To get the details of all books\n\n"
+                );
+                Console.WriteLine("--------------------------");
+
+                Console.Write("Enter the Option you want to perform :");
+
+                int option = int.Parse(Console.ReadLine());
+
+                if (option == 1)
+                {
+                    GetBook();
+                }
+                else if (option == 2)
+                {
+                    RemoveBook();
+                }
+                else if (option == 3)
+                {
+                    SearchBook();
+                }
+                else if (option == 4)
+                {
+                    Borrow();
+                }
+                else if (option == 5)
+                {
+                    ReturnBook();
+                }
+                else if (option == 6)
+                {
+                    Console.WriteLine("Thank you");
+                    close = false;
+                    break;
+                }
+                else if (option == 7)
+                {
+                    if (bookList.Count > 0)
+                    {
+                        details();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Book ");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option\nRetry !!!");
+                }
+
+            }
+        }
+        public static void forNewspaper()
+        {
+            bool close = true;
+            while (close)
+            {
+
+                Console.WriteLine("\nOption To Select\n" +
+                "1)press 1 to  Add newspaper\n" +
+                "2)Press 2 to Delete newspaper\n" +
+                "3)Press 3 to Search newspaper\n" +
+
+                "4)To Close Press Library 4 \n" +
+                "5)To get the details of all newspaper\n\n"
+                );
+                Console.WriteLine("--------------------------");
+
+                Console.Write("Enter the Option you want to perform :");
+
+                int option = int.Parse(Console.ReadLine());
+
+                if (option == 1)
+                {
+                    GetNewspaper();
+                }
+                else if (option == 2)
+                {
+                    RemoveNewspaper();
+                }
+                else if (option == 3)
+                {
+                    SearchNewspaper();
+                }
+
+                else if (option == 4)
+                {
+                    Console.WriteLine("Thank you");
+                    close = false;
+                    break;
+                }
+                else if (option == 5)
+                {
+                    if (paperList.Count > 0)
+                    {
+                        detailsNewspaper();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Book ");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option\nRetry !!!");
+                }
+
+            }
+        }
+
         //To add book details to the Library database
         public static void GetBook()
         {
@@ -189,18 +209,19 @@ namespace LibraryManagement
             Console.WriteLine("Book Id:{0}", book.bookId = bookList.Count + 1);
             Console.Write("Book Name:");
             book.bookName = Console.ReadLine();
-            Console.Write("Book Price:");
+            Console.Write("Enter the MRP of Book :");
             book.bookPrice = int.Parse(Console.ReadLine());
-            Console.Write("Number of Books:");
+            Console.Write("Number of Books You want Add=:");
             book.x = book.bookCount = int.Parse(Console.ReadLine());
+
             bookList.Add(book);
         }
 
-        //To delete book details from the Library database 
+        //To delete book details from the Library database
         public static void RemoveBook()
         {
             Book book = new Book();
-            Console.Write("Enter Book id to be deleted : ");
+            Console.Write("Enter Book id to delete : ");
 
             int Del = int.Parse(Console.ReadLine());
 
@@ -217,11 +238,11 @@ namespace LibraryManagement
             bookList.Add(book);
         }
 
-        //To search book details from the Library database using Book id 
+        //To search book details from the Library database using Book id
         public static void SearchBook()
         {
             Book book = new Book();
-            Console.Write("Search by BOOK id :");
+            Console.Write("Please Enter The Particular Book Id for Search :");
             int find = int.Parse(Console.ReadLine());
 
             if (bookList.Exists(x => x.bookId == find))
@@ -230,6 +251,7 @@ namespace LibraryManagement
                 {
                     if (searchId.bookId == find)
                     {
+                        Console.WriteLine("Searched Book infromation:");
                         Console.WriteLine("Book id :{0}\n" +
                         "Book name :{1}\n" +
                         "Book price :{2}\n" +
@@ -240,6 +262,21 @@ namespace LibraryManagement
             else
             {
                 Console.WriteLine("Book id {0} not found", find);
+            }
+        }
+        public static void details()
+        {
+            foreach (Book searchId in bookList)
+            {
+
+
+                Console.WriteLine(" Book infromation:");
+                Console.WriteLine("Book id :{0}\n" +
+                "Book name :{1}\n" +
+                "Book price :{2}\n" +
+                "Book Count :{3}", searchId.bookId, searchId.bookName, searchId.bookPrice, searchId.bookCount);
+                Console.WriteLine();
+
             }
         }
 
@@ -261,6 +298,7 @@ namespace LibraryManagement
             borrow.userAddress = Console.ReadLine();
             borrow.borrowDate = DateTime.Now;
             Console.WriteLine("Date - {0} and Time - {1}", borrow.borrowDate.ToShortDateString(), borrow.borrowDate.ToShortTimeString());
+            Console.WriteLine("Book Borrowed succesfully");
 
             if (bookList.Exists(x => x.bookId == borrow.borrowBookId))
             {
@@ -288,7 +326,7 @@ namespace LibraryManagement
             borrowList.Add(borrow);
         }
 
-        //To return borrowed book to the library 
+        //To return borrowed book to the library
         public static void ReturnBook()
         {
             Book book = new Book();
@@ -324,49 +362,48 @@ namespace LibraryManagement
                 Console.WriteLine("Book id {0} not found", returnId);
             }
         }
+        // for newspaper
 
-        //Adding a newspaper to library
-        public static void AddPaper()
+        public static void GetNewspaper()
         {
-            Newspaper paper = new Newspaper();
-            Console.WriteLine("Paper Id:{0}", paper.paperID = paperList.Count + 1);
-            Console.Write("Paper Name:");
-            paper.paperName = Console.ReadLine();
-            Console.Write("Paper Price:");
-            paper.paperPrice = int.Parse(Console.ReadLine());
-            Console.Write("Number of papers:");
-            paper.a = paper.paperCount = int.Parse(Console.ReadLine());
-            paperList.Add(paper);
+            Newspaper newspaper = new Newspaper();
+            Console.WriteLine("Newspaper Id:{0}", newspaper.paperID = paperList.Count + 1);
+            Console.Write("Newspaper Name:");
+            newspaper.paperName = Console.ReadLine();
+            Console.Write("Enter the MRP of Newspaper :");
+            newspaper.paperPrice = int.Parse(Console.ReadLine());
+            Console.Write("Number of Newspaper You want Add=:");
+            newspaper.a = newspaper.paperCount = int.Parse(Console.ReadLine());
+
+            paperList.Add(newspaper);
         }
 
-        //Deleting paper from the library
-
-        public static void RemovePaper()
+        //To delete Newspaper details from the Library database
+        public static void RemoveNewspaper()
         {
-            Newspaper paper = new Newspaper();
-            Console.Write("Enter Paper id to be deleted : ");
+            Newspaper newspaper = new Newspaper();
+            Console.Write("Enter newspaper id to delete : ");
 
             int Del = int.Parse(Console.ReadLine());
 
             if (paperList.Exists(x => x.paperID == Del))
             {
                 paperList.RemoveAt(Del - 1);
-                Console.WriteLine("Paper id - {0} has been deleted", Del);
+                Console.WriteLine("Newspaper id - {0} has been deleted", Del);
             }
             else
             {
-                Console.WriteLine("Invalid Paper id");
+                Console.WriteLine("Invalid Newspaper id");
             }
 
-            paperList.Add(paper);
+            paperList.Add(newspaper);
         }
 
-        //To search paper details from the Library database using Paper id 
-
-        public static void SearchPaper()
+        //To search book details from the Library database using Book id
+        public static void SearchNewspaper()
         {
-            Newspaper paper = new Newspaper();
-            Console.Write("Search by Paper id :");
+            Newspaper newspaper = new Newspaper();
+            Console.Write("Please Enter The Particular Newspaper Id for Search :");
             int find = int.Parse(Console.ReadLine());
 
             if (paperList.Exists(x => x.paperID == find))
@@ -375,21 +412,36 @@ namespace LibraryManagement
                 {
                     if (searchId.paperID == find)
                     {
-                        Console.WriteLine("Paper id :{0}\n" +
-                        "Paper name :{1}\n" +
-                        "Paper price :{2}\n" +
-                        "Paper Count :{3}", searchId.paperID, searchId.paperName, searchId.paperPrice, searchId.paperCount);
+                        Console.WriteLine("Searched Newspaper infromation:");
+                        Console.WriteLine("Book id :{0}\n" +
+                        "Newspaper name :{1}\n" +
+                        "Newspaper price :{2}\n" +
+                        "Newspaper Count :{3}", searchId.paperID, searchId.paperName, searchId.paperPrice, searchId.paperCount);
                     }
                 }
             }
             else
             {
-                Console.WriteLine("Paper id {0} not found", find);
+                Console.WriteLine("Newspaper id {0} not found", find);
+            }
+        }
+        public static void detailsNewspaper()
+        {
+            foreach (Newspaper searchId in paperList)
+            {
+
+
+                Console.WriteLine(" Newspaper infromation:");
+                Console.WriteLine("Newspaper id :{0}\n" +
+                "Newspaper name :{1}\n" +
+                "Newspaper price :{2}\n" +
+                "Newspaper Count :{3}", searchId.paperID, searchId.paperName, searchId.paperPrice, searchId.paperCount);
+                Console.WriteLine();
+
             }
         }
 
+
+
     }
-
-    
-
 }
